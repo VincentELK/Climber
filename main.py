@@ -12,10 +12,10 @@ def main():
     dt = 0
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
     player = Player(x, y)
-    
-    player_rect = pygame.Rect(100,100,50,50)
-    speed = 5
     
     while running:
         
@@ -25,19 +25,15 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
-        
-
         # draw
         screen.fill((50,45,34))
-        player.update(dt)
-        player.draw(screen)
+        updatable.update(dt)
+        for object in drawable:
+            object.draw(screen)
+        
 
         pygame.display.flip()
         
         
-
-
-
-
 if __name__ == "__main__":
     main()
