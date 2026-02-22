@@ -4,7 +4,7 @@ class RectShape(pygame.sprite.Sprite):
     def __init__(self, x, y, width, height):
 
         if hasattr(self, "containers"):
-            super().__init__(self.containers) # type: ignore
+            super().__init__(self.containers) 
         else:
             super().__init__()
         

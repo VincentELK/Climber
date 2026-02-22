@@ -1,6 +1,8 @@
 import pygame
 from constants import SCREEN_WIDTH,SCREEN_HEIGHT
 from player import Player
+from ladder import Ladder
+from ladder_parts import Part
 def main():
     pygame.init()
     print(f"Starting Climber with pygame version: {pygame.version.ver}")
@@ -12,9 +14,15 @@ def main():
     dt = 0
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
+    
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    parts = pygame.sprite.Group()
+    Ladder.containers = (updatable, drawable)
+    Part.containers = (parts, updatable, drawable )
     Player.containers = (updatable, drawable)
+    ladder = Ladder(x, 0)
+
     player = Player(x, y)
     
     while running:

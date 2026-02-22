@@ -3,7 +3,7 @@ from constants import PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED
 from rectshape import RectShape
 
 class Player(RectShape):
-    containers: tuple[pygame.sprite.Group, ...] = () # create type of tuple for the container
+    containers: tuple[pygame.sprite.Group, ...] = ()# create type of tuple for the container
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_WIDTH, PLAYER_HEIGHT )
 
