@@ -1,6 +1,7 @@
 import pygame
 from constants import PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_SPEED
 from rectshape import RectShape
+from ladder import Ladder
 
 class Player(RectShape):
     containers: tuple[pygame.sprite.Group, ...] = ()# create type of tuple for the container
@@ -18,10 +19,6 @@ class Player(RectShape):
         self.rect.center = (self.position.x, self.position.y)
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_a]:
-            self.move(dt, pygame.Vector2(-1,0))
-        if keys[pygame.K_d]:
-            self.move(dt, pygame.Vector2(1,0))
         if keys[pygame.K_w]:
             self.move(dt, pygame.Vector2(0,-1))
         if keys[pygame.K_s]:

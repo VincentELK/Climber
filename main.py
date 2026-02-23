@@ -12,8 +12,7 @@ def main():
     clock = pygame.time.Clock()
     fps = clock.get_fps()
     dt = 0
-    x = SCREEN_WIDTH / 2
-    y = SCREEN_HEIGHT / 2
+    
     
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -21,10 +20,12 @@ def main():
     Ladder.containers = (updatable, drawable)
     Part.containers = (parts, updatable, drawable )
     Player.containers = (updatable, drawable)
-    ladder = Ladder(x, 0)
-
-    player = Player(x, y)
     
+    ladder_x = SCREEN_WIDTH / 2
+    
+    ladder = Ladder(ladder_x, 0)
+    
+    player = Player(ladder_x, ladder.parts[-1].position.y)
     while running:
         
         dt = clock.tick(60)/1000
