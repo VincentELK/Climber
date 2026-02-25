@@ -1,7 +1,7 @@
 import pygame
 from constants import SCREEN_WIDTH,SCREEN_HEIGHT
-from player import Player
-
+import player
+import ladder
 def main():
     pygame.init()
     print(f"Starting Climber with pygame version: {pygame.version.ver}")
@@ -12,7 +12,7 @@ def main():
     fps = clock.get_fps()
     dt = 0
     
-
+    ladder.spawn()
     while running:
         
         dt = clock.tick(60)/1000
@@ -20,12 +20,14 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        player.update(dt)
+        ladder.update(dt)
         
         # draw
         screen.fill((50,45,34))
-     
         
-
+        player.draw(screen)
+        ladder.draw(screen)
         pygame.display.flip()
         
         
